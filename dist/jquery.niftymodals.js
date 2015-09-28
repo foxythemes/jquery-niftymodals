@@ -16,25 +16,30 @@
       modalAttr: 'data-modal',
       perspectiveClass: 'md-perspective',
       perspectiveSetClass: 'md-setperspective',
-      afterOpen: function(modal) {
-      //do your stuff
-      },
-      afterClose: function(modal) {
-      //do your suff
-      }
+      data: false,
+      beforeOpen: false,
+      afterOpen: false,
+      beforeClose: false,
+      afterClose: false
     };
 
     var config = {};
-
+    var modal = {};
     var methods = {
 
-      init : function(options) {
+      init : function( options ) {
 
         return this.each(function() {
           config = $.extend({}, defaults, options);
-          var modal = $(this);
+
+          modal.domEl = this;
+
+          if( config.data !== false ){
+            modal.data = options.data;
+          }
+
           //Show modal
-          helpers.showModal(modal);
+          helpers.showModal( this );
         });
       },
 
@@ -53,7 +58,21 @@
       show: function(options) {
         config = $.extend({}, defaults, options);
         return this.each(function() {
-          helpers.showModal($(this));
+
+          var mod = $( this );
+
+          //beforeOpen event
+          if( typeof config.beforeOpen === 'function' ){
+            var before = config.beforeOpen( modal );
+
+            if( before === false){
+              return false;
+            }
+          }
+
+          //Show the modal
+          helpers.showModal( mod );
+          
         });
       },
 
@@ -67,33 +86,54 @@
 
     var helpers = {
 
-      removeModal: function(mod) {
-        mod.removeClass(config.classAddAfterOpen);
+      removeModal: function( m ) {
+        var mod = $( m );
+        mod.removeClass( config.classAddAfterOpen );
         mod.css({'perspective':'1300px'});
         mod.trigger('hide');
       },
       
-      showModal: function(mod){
+      showModal: function( m ){
+        var mod = $(m);
         var overlay = $(config.overlaySelector);
-        var close = $(config.closeSelector, mod);
-        mod.addClass(config.classAddAfterOpen);
-        
-        //Overlay Click Event
-        overlay.on('click', function (e) {
-          var after = config.afterClose(mod, e);
-          if( after === undefined || after !== false){
-             helpers.removeModal(mod);
-             overlay.off('click');
+        var close = $(config.closeSelector, m);
+
+        //Make the modal visible
+        mod.addClass(config.classAddAfterOpen, function( m ){
+          
+          //After open event
+          if( typeof config.afterOpen === 'function' ){
+            config.afterOpen( modal );
           }
         });
         
-        //Fire after open event
-        config.afterOpen(mod);
+        //Overlay Click Event
+        overlay.on('click', function ( e ) {
+
+          //Before close event
+          if( typeof config.beforeClose === 'function' ){
+            var before = config.beforeClose(modal, e);
+
+            if( before === false ){
+              return false;
+            }
+          }
+          
+          helpers.removeModal(m);
+          overlay.off('click');
+
+          //After close event
+          if( typeof config.afterClose === 'function' ){
+            config.afterClose(modal, e);
+          }
+
+        });
+
         setTimeout( function() {
           mod.css({'perspective':'none'});
           
           //3D Blur Bug Fix
-          if(mod.height() % 2 !== 0){
+          if( mod.height() % 2 !== 0){
             mod.css({ 'height' : mod.height() + 1 });
           }
 
@@ -101,11 +141,24 @@
         
         //Close Event
         close.on( 'click', function( ev ) {
-          var after = config.afterClose(mod, ev);
-          if( after === undefined || after !== false){
-             helpers.removeModal(mod);
-             overlay.off('click');
+          
+          //Before close event
+          if( typeof config.beforeClose === 'function' ){
+            var before = config.beforeClose(modal, ev);
+
+            if( before === false ){
+              return false;
+            }
+          }  
+        
+          helpers.removeModal( m );
+          overlay.off('click');
+
+          //After close event
+          if( typeof config.afterClose === 'function' ){
+            config.afterClose( modal, ev);
           }
+
           ev.stopPropagation();
         });
         

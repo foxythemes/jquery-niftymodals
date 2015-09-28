@@ -15,7 +15,8 @@
     <script src="dist/jquery.niftymodals.js"></script>
     <script>
 	    $(document).ready(function() {
-	       
+	      
+	      //To keep compatibility with previous version
 				$('.md-trigger').on('click',function(){
 					var modal = $(this).data('modal');
 					$("#" + modal).niftyModal();
