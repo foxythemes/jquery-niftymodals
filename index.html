@@ -9,84 +9,48 @@
 		<meta name="keywords" content="modal, window, overlay, modern, box, css transition, css animation, effect, 3d, perspective" />
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico"> 
-    <!--
-      Authors
-               Original: Mary Lou, 2013.06.25
-                         http://tympanus.net/codrops/2013/06/25/nifty-modal-window-effects/comment-page-2/
-        
-        jQuery reworked: Ernest Marcinko, 2013.06.27
-                         http://wp-dreams.com/nifty-modal-window-effects-with-css3-and-jquery/ 
-    -->
+		<link rel="stylesheet" type="text/css" href="lib/demo.css" />
+		<link rel="stylesheet" type="text/css" href="dist/jquery.niftymodals.css" />  
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="dist/jquery.niftymodals.js"></script>
+    <script>
+      (function($){
+        $(document).ready(function() {
+           
+					$('.md-trigger').on('click',function(){
+						var modal = $(this).data('modal');
+						$(modal).niftyModal();
+					});
+
+           //Declare begin
+           $('.md-trigger').modalEffects({
+            afterClose: function(button, modal) {
+              $('.md-trigger').removeClass('highlighted');
+              $(button).addClass('highlighted');
+              $('#afterclose')
+                .removeClass('invisible')
+                .html('Just closed modal: "'+ $(button).html() + '"');
+              setTimeout(function(){
+                $(button).removeClass('highlighted');
+                $('#afterclose').addClass('invisible');                
+              }, 3000);
+            }
+           });
+           //Declare end
+           
+        });
+      })(jQuery);
+    </script> 
+
+		<!-- for the blur effect -->
+		<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
+		<script>
+			// this is important for IEs
+			var polyfilter_scriptpath = '/lib/js/';
+		</script>
     
-    <!-- Required scripts and styles -->
-    		<link rel="stylesheet" type="text/css" href="css/default.css" />
-    		<link rel="stylesheet" type="text/css" href="css/component.css" />  
-    		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script src="js/jquery.modalEffects.js"></script>
-        <script>
-          (function($){
-            $(document).ready(function() {
-               
-               //Declare begin
-               $('.md-trigger').modalEffects({
-                afterClose: function(button, modal) {
-                  $('.md-trigger').removeClass('highlighted');
-                  $(button).addClass('highlighted');
-                  $('#afterclose')
-                    .removeClass('invisible')
-                    .html('Just closed modal: "'+ $(button).html() + '"');
-                  setTimeout(function(){
-                    $(button).removeClass('highlighted');
-                    $('#afterclose').addClass('invisible');                
-                  }, 3000);
-                }
-               });
-               //Declare end
-               
-            });
-          })(jQuery);
-          /*
-          Default plugin Declaration:
-              
-             $('.md-trigger').modalEffects();
-                
-                -- OR --
-          
-             $('.md-trigger').modalEffects({
-                 overlaySelector: '.md-overlay',
-                 closeSelector: '.md-close',
-                 classAddAfterOpen: 'md-show',
-                 modalAttr: 'data-modal',
-                 perspectiveClass: 'md-perspective',
-                 perspectiveSetClass: 'md-setperspective',
-                 afterOpen: function(button, modal) {
-                  
-                 },
-                 afterClose: function(button, modal) {
-                  
-                 }
-             });
-             
-          */
-        </script> 
-    <!-- end of required scripts/styles -->
-    
-    <!-- Optional scripts/styles for better layout -->
-        <script src="js/modernizr.custom.js"></script>
-    		<!-- classie.js by @desandro: https://github.com/desandro/classie -->
-    		<script src="js/classie.js"></script>
-    		
-    
-    		<!-- for the blur effect -->
-    		<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
-    		<script>
-    			// this is important for IEs
-    			var polyfilter_scriptpath = '/js/';
-    		</script>
-        
-    		<script src="js/cssParser.js"></script>
-    		<script src="js/css-filters-polyfill.js"></script>
-    <!-- end of optional scripts/styles -->
+		<script src="lib/js/cssParser.js"></script>
+		<script src="lib/js/css-filters-polyfill.js"></script>
     
 	</head>
 	<body>
@@ -414,20 +378,5 @@
 			</div>
 		</div><!-- /container -->
 		<div class="md-overlay"></div><!-- the overlay element -->
-    
-    <script type="text/javascript">
-    
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-35436589-1']);
-      _gaq.push(['_setDomainName', 'wp-dreams.com']);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    
-    </script>
 	</body>
 </html>
