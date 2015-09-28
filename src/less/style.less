@@ -55,7 +55,7 @@ perspective effects (not including the modals and the overlay).
 	left: 0;
 	z-index: 1000;
 	opacity: 0;
-	background: rgba(0,0,0,0.5);
+	background: rgba(143,27,15,0.8);
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
@@ -77,16 +77,41 @@ perspective effects (not including the modals and the overlay).
 
 .md-content h3 {
 	margin: 0;
-  display: inline;
+	padding: 0.4em;
+	text-align: center;
+	font-size: 2.4em;
+	font-weight: 300;
+	opacity: 0.8;
+	background: rgba(0,0,0,0.1);
+	border-radius: 3px 3px 0 0;
 }
 
 .md-content > div {
+	padding: 15px 40px 30px;
 	margin: 0;
 	font-weight: 300;
 	font-size: 1.15em;
 }
 
+.md-content > div p {
+	margin: 0;
+	padding: 10px 0;
+}
 
+.md-content > div ul {
+	margin: 0;
+	padding: 0 0 30px 20px;
+}
+
+.md-content > div ul li {
+	padding: 5px 0;
+}
+
+.md-content button {
+	display: block;
+	margin: 0 auto;
+	font-size: 0.8em;
+}
 
 /* Individual modal styles with animations/transitions */
 
@@ -384,9 +409,13 @@ perspective effects (not including the modals and the overlay).
 }
 
 .md-show.md-effect-12 ~ .md-overlay {
-	background: #000;
+	background: #e74c3c;
 } 
 
+.md-effect-12 .md-content h3,
+.md-effect-12 .md-content {
+	background: transparent;
+}
 
 .md-show.md-effect-12 .md-content {
 	-webkit-transform: scale(1);
@@ -702,55 +731,4 @@ perspective effects (not including the modals and the overlay).
 
 @media screen and (max-width: 32em) {
 	body { font-size: 75%; }
-}
-
-@-moz-keyframes blink {
-  10% {opacity: 1}
-  20% {opacity: 0.8}
-	30% {opacity: 0.7}
-  40% {opacity: 0.5}
-  50% {opacity: 0.4}
-  60% {opacity: 0.5}
-  70% {opacity: 0.6}
-	80% {opacity: 0.7}
-  90% {opacity: 0.9}
-  100% {opacity: 1}
-}
-
-@-webkit-keyframes blink {
-  10% {opacity: 1}
-  20% {opacity: 0.8}
-	30% {opacity: 0.7}
-  40% {opacity: 0.5}
-  50% {opacity: 0.4}
-  60% {opacity: 0.5}
-  70% {opacity: 0.6}
-	80% {opacity: 0.7}
-  90% {opacity: 0.9}
-  100% {opacity: 1}
-}
-
-@-keyframes blink {
-  10% {opacity: 1}
-  20% {opacity: 0.8}
-	30% {opacity: 0.7}
-  40% {opacity: 0.5}
-  50% {opacity: 0.4}
-  60% {opacity: 0.5}
-  70% {opacity: 0.6}
-	80% {opacity: 0.7}
-  90% {opacity: 0.9}
-  100% {opacity: 1}
-}
-
-#afterclose {
-  transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
-  -webkit-transition: all 0.5s linear;
-  -ms-transition: all 0.5s linear;
-	animation: blink 1s infinite;
-}
-
-.highlighted {
-  box-shadow: 0 0 1px 2px #FFF;
 }

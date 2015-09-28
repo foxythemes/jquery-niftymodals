@@ -11,35 +11,17 @@
 		<link rel="shortcut icon" href="../favicon.ico"> 
 		<link rel="stylesheet" type="text/css" href="lib/demo.css" />
 		<link rel="stylesheet" type="text/css" href="dist/jquery.niftymodals.css" />  
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="dist/jquery.niftymodals.js"></script>
     <script>
-      (function($){
-        $(document).ready(function() {
-           
-					$('.md-trigger').on('click',function(){
-						var modal = $(this).data('modal');
-						$(modal).niftyModal();
-					});
-
-           //Declare begin
-           $('.md-trigger').modalEffects({
-            afterClose: function(button, modal) {
-              $('.md-trigger').removeClass('highlighted');
-              $(button).addClass('highlighted');
-              $('#afterclose')
-                .removeClass('invisible')
-                .html('Just closed modal: "'+ $(button).html() + '"');
-              setTimeout(function(){
-                $(button).removeClass('highlighted');
-                $('#afterclose').addClass('invisible');                
-              }, 3000);
-            }
-           });
-           //Declare end
-           
-        });
-      })(jQuery);
+	    $(document).ready(function() {
+	       
+				$('.md-trigger').on('click',function(){
+					var modal = $(this).data('modal');
+					$("#" + modal).niftyModal();
+				});
+	       
+	    });
     </script> 
 
 		<!-- for the blur effect -->
@@ -338,20 +320,15 @@
 		<div class="container">
 			<!-- Top Navigation -->
 			<div class="codrops-top clearfix">
-				<a class="codrops-icon codrops-icon-drop" href="http://wp-dreams.com/nifty-modal-window-effects-with-css3-and-jquery/"><span>Back to the wp-dreams Article</span></a>
-				<span class="right"><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=15313"><span>Original Codrops Article</span></a></span>
+				<span class="right"><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=15313"><span>Back to the Codrops Article</span></a></span>
 			</div>
 			<header>
-				<h1>Nifty Modal Window Effects with jQuery<span>Some inspiration for different modal window appearances</span></h1>
+				<h1>Nifty Modal Window Effects<span>Some inspiration for different modal window appearances</span></h1>
         <div id='afterclose' class='invisible'></div>
 			</header>
 			<div class="main clearfix">
 				<div class="column">
 					<p>There are many possibilities for modal overlays to appear. Here are some modern ways of showing them using CSS transitions and animations.</p>
-          <p>
-            <a href='http://wp-dreams.com/nifty-modal-window-effects-with-css3-and-jquery/' class='info-download'>Info & Download</a>
-            <a href='http://tympanus.net/codrops/2013/06/25/nifty-modal-window-effects/comment-page-2/' class='original'>Non-jQuery version</a>
-          </p>
 				</div>
 				<div class="column">
 					<button class="md-trigger" data-modal="modal-1">Fade in &amp; Scale</button>

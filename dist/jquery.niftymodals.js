@@ -1,3 +1,9 @@
+/*!
+ * jquery.niftymodals v1.1.0 (https://github.com/foxythemes/jquery-niftymodals)
+ * Copyright 2015 Foxy Themes 
+ * Licensed under MIT license 
+ */
+
 ;(function($) {
   'use strict';
 

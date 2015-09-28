@@ -11,5 +11,6 @@
   "boss": true,
   "eqnull": true,
   "devel": true,
+  "browser": true,
   "predef": ["exports"]
 }

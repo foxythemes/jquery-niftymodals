@@ -10,7 +10,8 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
         ' * <%= pkg.name %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-        ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> all rights reserved \n' +
+        ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> \n' +
+        ' * Licensed under MIT license \n' +
         ' */\n\n',
     // Task configuration.
     concat: {
