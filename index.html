@@ -15,11 +15,31 @@
     <script src="dist/jquery.niftymodals.js"></script>
     <script>
 	    $(document).ready(function() {
-	      
-	      //To keep compatibility with previous version
+	       
 				$('.md-trigger').on('click',function(){
+
 					var modal = $(this).data('modal');
-					$("#" + modal).niftyModal();
+					$("#" + modal).niftyModal({
+						data: {
+							id: "24"
+						},
+						buttons:[
+							{
+								class: 'md-close',
+								callback: function( btn, modal, event){
+									console.log(btn);
+									return false;
+								}
+							}
+						],
+						beforeOpen: function( modal ){
+							console.log( modal );
+						},
+						beforeClose: function( modal, event ){
+				    	console.log( modal );
+				    	event.stopImmediatePropagation();
+				    }
+					});
 				});
 	       
 	    });

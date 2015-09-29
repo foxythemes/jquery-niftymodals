@@ -17,6 +17,7 @@
       perspectiveClass: 'md-perspective',
       perspectiveSetClass: 'md-setperspective',
       data: false,
+      buttons: false,
       beforeOpen: false,
       afterOpen: false,
       beforeClose: false,
@@ -32,7 +33,7 @@
         return this.each(function() {
           config = $.extend({}, defaults, options);
 
-          modal.domEl = this;
+          modal.modalEl = this;
 
           if( config.data !== false ){
             modal.data = options.data;
@@ -41,8 +42,8 @@
           //Show modal
           helpers.showModal( this );
         });
-      },
 
+      },
       toggle: function(options) {
         return this.each(function() {
           config = $.extend({}, defaults, options);
@@ -54,28 +55,17 @@
           }
         });
       },
-
       show: function(options) {
         config = $.extend({}, defaults, options);
         return this.each(function() {
 
           var mod = $( this );
 
-          //beforeOpen event
-          if( typeof config.beforeOpen === 'function' ){
-            var before = config.beforeOpen( modal );
-
-            if( before === false){
-              return false;
-            }
-          }
-
           //Show the modal
           helpers.showModal( mod );
           
         });
       },
-
       hide: function(options) {
         config = $.extend({}, defaults, options);
         return this.each(function() {
@@ -91,12 +81,18 @@
         mod.removeClass( config.classAddAfterOpen );
         mod.css({'perspective':'1300px'});
         mod.trigger('hide');
-      },
-      
+      },    
       showModal: function( m ){
         var mod = $(m);
         var overlay = $(config.overlaySelector);
         var close = $(config.closeSelector, m);
+
+        //beforeOpen event
+        if( typeof config.beforeOpen === 'function' ){
+          if( config.beforeOpen( modal ) === false){
+            return false;
+          }
+        }
 
         //Make the modal visible
         mod.addClass(config.classAddAfterOpen, function( m ){
@@ -110,11 +106,11 @@
         //Overlay Click Event
         overlay.on('click', function ( e ) {
 
+          modal.closeEl = overlay.get( 0 );
+
           //Before close event
           if( typeof config.beforeClose === 'function' ){
-            var before = config.beforeClose(modal, e);
-
-            if( before === false ){
+            if( config.beforeClose(modal, e) === false ){
               return false;
             }
           }
@@ -142,17 +138,32 @@
         //Close Event
         close.on( 'click', function( ev ) {
           
+          modal.closeEl = close.get( 0 );
+
           //Before close event
           if( typeof config.beforeClose === 'function' ){
-            var before = config.beforeClose(modal, ev);
+            if( config.beforeClose(modal, ev) === false ){
+              return false;
+            }
+          }  
 
-            if( before === false ){
+          //Buttons callback
+          if( config.buttons && $.isArray( config.buttons ) ){
+            var cancel = true;
+            
+            $.each(config.buttons, function( i, v){
+              if( close.hasClass( v.class ) && typeof v.callback !== undefined && typeof v.callback === 'function' ){
+                cancel = v.callback( close.get( 0 ), modal, ev);
+              }
+            });
+
+            if( !cancel ){
               return false;
             }
           }  
         
           helpers.removeModal( m );
-          overlay.off('click');
+          close.off('click');
 
           //After close event
           if( typeof config.afterClose === 'function' ){
