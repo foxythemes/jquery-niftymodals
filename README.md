@@ -1,4 +1,5 @@
-Created by Codrops
+# jQuery NiftyModals
+This is a jQuery plugin version of the [Codrops ModalWindowEffects](https://github.com/codrops/ModalWindowEffects).
 
 http://www.codrops.com
 
