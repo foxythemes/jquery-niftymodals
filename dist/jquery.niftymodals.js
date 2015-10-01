@@ -117,6 +117,7 @@
           
           helpers.removeModal(m);
           overlay.off('click');
+          close.off('click');
 
           //After close event
           if( typeof config.afterClose === 'function' ){
@@ -137,7 +138,7 @@
         
         //Close Event
         close.on( 'click', function( ev ) {
-          
+          var btn = $(this);
           modal.closeEl = close.get( 0 );
 
           //Before close event
@@ -152,12 +153,12 @@
             var cancel = true;
             
             $.each(config.buttons, function( i, v){
-              if( close.hasClass( v.class ) && typeof v.callback !== undefined && typeof v.callback === 'function' ){
-                cancel = v.callback( close.get( 0 ), modal, ev);
+              if( btn.hasClass( v.class ) && typeof v.callback === 'function' ){
+                cancel = v.callback( btn.get( 0 ), modal, ev);
               }
             });
 
-            if( !cancel ){
+            if( cancel === false && typeof cancel !== undefined ){
               return false;
             }
           }  
