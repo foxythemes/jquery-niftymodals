@@ -7,22 +7,19 @@
 ;(function($) {
   'use strict';
 
-  $.fn.niftyModal = function(method) {
+  var defaults = {
+    overlaySelector: '.md-overlay',
+    closeSelector: '.md-close',
+    classAddAfterOpen: 'md-show',
+    data: false,
+    buttons: false,
+    beforeOpen: false,
+    afterOpen: false,
+    beforeClose: false,
+    afterClose: false
+  };
 
-    var defaults = {
-      overlaySelector: '.md-overlay',
-      closeSelector: '.md-close',
-      classAddAfterOpen: 'md-show',
-      modalAttr: 'data-modal',
-      perspectiveClass: 'md-perspective',
-      perspectiveSetClass: 'md-setperspective',
-      data: false,
-      buttons: false,
-      beforeOpen: false,
-      afterOpen: false,
-      beforeClose: false,
-      afterClose: false
-    };
+  $.fn.niftyModal = function(method) {
 
     var config = {};
     var modal = {};
@@ -177,6 +174,12 @@
         return this.each(function() {
           helpers.removeModal($(this));  
         });            
+      },
+      setDefaults: function( options ) {
+        defaults = $.extend({}, defaults, options);
+      },
+      getDefaults: function( ) {
+        return defaults;
       }
     };
 
@@ -195,7 +198,7 @@
 /**
  * Self execute to support previous versions with 'md-trigger' class & data-modal attribute
  */
- 
+
 $('.md-trigger').on('click',function(){
   var modal = $(this).data('modal');
   $("#" + modal).niftyModal();

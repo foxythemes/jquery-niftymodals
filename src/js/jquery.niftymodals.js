@@ -1,19 +1,19 @@
 ;(function($) {
   'use strict';
 
-  $.fn.niftyModal = function(method) {
+  var defaults = {
+    overlaySelector: '.md-overlay',
+    closeSelector: '.md-close',
+    classAddAfterOpen: 'md-show',
+    data: false,
+    buttons: false,
+    beforeOpen: false,
+    afterOpen: false,
+    beforeClose: false,
+    afterClose: false
+  };
 
-    var defaults = {
-      overlaySelector: '.md-overlay',
-      closeSelector: '.md-close',
-      classAddAfterOpen: 'md-show',
-      data: false,
-      buttons: false,
-      beforeOpen: false,
-      afterOpen: false,
-      beforeClose: false,
-      afterClose: false
-    };
+  $.fn.niftyModal = function(method) {
 
     var config = {};
     var modal = {};
@@ -168,6 +168,12 @@
         return this.each(function() {
           helpers.removeModal($(this));  
         });            
+      },
+      setDefaults: function( options ) {
+        defaults = $.extend({}, defaults, options);
+      },
+      getDefaults: function( ) {
+        return defaults;
       }
     };
 
