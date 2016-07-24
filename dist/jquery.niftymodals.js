@@ -191,3 +191,12 @@
   };
 
 })(jQuery);
+
+/**
+ * Self execute to support previous versions with 'md-trigger' class & data-modal attribute
+ */
+ 
+$('.md-trigger').on('click',function(){
+  var modal = $(this).data('modal');
+  $("#" + modal).niftyModal();
+});
