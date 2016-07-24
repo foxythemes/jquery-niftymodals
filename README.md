@@ -82,6 +82,31 @@ $('#modal-id').niftyModal({
 });
 ```
 
+### Setting defaults
+You can set the default options like this:
+```javascript
+$.fn.niftyModal('setDefaults',{
+	overlaySelector: '.modal-overlay',
+	closeSelector: '.modal-close',
+	classAddAfterOpen: 'modal-show',
+});
+```
+
+### Integrate with bootstrap modals style
+In order to integrate with bs modals style you'll need to load the css bootstrap adapter instead of the default one:
+```html
+<link rel="stylesheet" type="text/css" href="[your path]/dist/jquery.niftymodals.bootstrap.css">
+```
+This file contains only the essential css, this way you can use the bs classes like `modal-header`, `modal-content` & `modal-footer`.
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
 # License
 http://www.codrops.com
 
