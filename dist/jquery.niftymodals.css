@@ -20,10 +20,6 @@ perspective effects (not including the modals and the overlay).
   -moz-perspective: 600px;
   perspective: 600px;
 }
-.container {
-  background: #e74c3c;
-  min-height: 100%;
-}
 .md-modal {
   position: fixed;
   top: 50%;
@@ -103,7 +99,6 @@ perspective effects (not including the modals and the overlay).
   margin: 0 auto;
   font-size: 0.8em;
 }
-/* Individual modal styles with animations/transitions */
 /* Effect 1: Fade in and scale up */
 .md-effect-1 .md-content {
   -webkit-transform: scale(0.7);
@@ -626,66 +621,4 @@ perspective effects (not including the modals and the overlay).
   -webkit-transition: all 0.5s 0.1s;
   -moz-transition: all 0.5s 0.1s;
   transition: all 0.5s 0.1s;
-}
-/* Effect 19:  Slip in from the top with perspective on container */
-.md-show.md-effect-19 ~ .container {
-  height: 100%;
-  overflow: hidden;
-}
-.md-show.md-effect-19 ~ .md-overlay {
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  transition: all 0.5s;
-}
-.md-show.md-effect-19 ~ .container,
-.md-show.md-effect-19 ~ .md-overlay {
-  -webkit-transform-style: preserve-3d;
-  -webkit-transform-origin: 50% 100%;
-  -webkit-animation: OpenTop 0.5s forwards ease-in;
-  -moz-transform-style: preserve-3d;
-  -moz-transform-origin: 50% 100%;
-  -moz-animation: OpenTop 0.5s forwards ease-in;
-  transform-style: preserve-3d;
-  transform-origin: 50% 100%;
-  animation: OpenTop 0.5s forwards ease-in;
-}
-@-webkit-keyframes OpenTop {
-  50% {
-    -webkit-transform: rotateX(10deg);
-    -webkit-animation-timing-function: ease-out;
-  }
-}
-@-moz-keyframes OpenTop {
-  50% {
-    -moz-transform: rotateX(10deg);
-    -moz-animation-timing-function: ease-out;
-  }
-}
-@keyframes OpenTop {
-  50% {
-    transform: rotateX(10deg);
-    animation-timing-function: ease-out;
-  }
-}
-.md-effect-19 .md-content {
-  -webkit-transform: translateY(-200%);
-  -moz-transform: translateY(-200%);
-  -ms-transform: translateY(-200%);
-  transform: translateY(-200%);
-  opacity: 0;
-}
-.md-show.md-effect-19 .md-content {
-  -webkit-transform: translateY(0);
-  -moz-transform: translateY(0);
-  -ms-transform: translateY(0);
-  transform: translateY(0);
-  opacity: 1;
-  -webkit-transition: all 0.5s 0.1s;
-  -moz-transition: all 0.5s 0.1s;
-  transition: all 0.5s 0.1s;
-}
-@media screen and (max-width: 32em) {
-  body {
-    font-size: 75%;
-  }
 }
