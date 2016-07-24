@@ -363,7 +363,7 @@ perspective effects (not including the modals and the overlay).
   transition: all 0.3s;
 }
 .md-show.md-effect-12 ~ .md-overlay {
-  background: #e74c3c;
+  background: #000;
 }
 .md-effect-12 .md-content h3,
 .md-effect-12 .md-content {
