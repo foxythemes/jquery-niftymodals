@@ -8,7 +8,7 @@ This is a jQuery plugin version of the [Codrops ModalWindowEffects](https://gith
 
 ### Add script and style
 Include css & js file in your html head:
-```
+```html
 <link rel="stylesheet" type="text/css" href="[your path]/dist/jquery.niftymodals.css">
 <script src="[your path]/dist/jquery.niftymodals.js"></script>
 ```
