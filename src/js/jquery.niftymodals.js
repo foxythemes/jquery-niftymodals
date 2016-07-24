@@ -7,9 +7,6 @@
       overlaySelector: '.md-overlay',
       closeSelector: '.md-close',
       classAddAfterOpen: 'md-show',
-      modalAttr: 'data-modal',
-      perspectiveClass: 'md-perspective',
-      perspectiveSetClass: 'md-setperspective',
       data: false,
       buttons: false,
       beforeOpen: false,
@@ -189,7 +186,7 @@
 /**
  * Self execute to support previous versions with 'md-trigger' class & data-modal attribute
  */
- 
+
 $('.md-trigger').on('click',function(){
   var modal = $(this).data('modal');
   $("#" + modal).niftyModal();
