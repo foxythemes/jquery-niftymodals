@@ -30,7 +30,10 @@ module.exports = function(grunt) {
           banner: '<%= banner %>',
           paths: ["src/less"]
         },
-        files: {"dist/<%= pkg.name %>.css": "src/less/style.less"}
+        files: [
+          {"dist/<%= pkg.name %>.css": "src/less/style.less"},
+          {"dist/<%= pkg.name %>.bootstrap.css": "src/less/style-bootstrap.less"}
+        ]
       }
     },
     uglify: {
@@ -44,8 +47,10 @@ module.exports = function(grunt) {
     },
     cssmin:{
       dist: {
-        src: 'dist/<%= pkg.name %>.css',
-        dest: 'dist/<%= pkg.name %>.min.css'
+        files: [
+          {"dist/<%= pkg.name %>.min.css": "dist/<%= pkg.name %>.css"},
+          {"dist/<%= pkg.name %>.bootstrap.min.css": "dist/<%= pkg.name %>.bootstrap.css"}
+        ]
       }
     },
     jshint: {
