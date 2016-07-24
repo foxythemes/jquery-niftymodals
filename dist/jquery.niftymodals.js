@@ -1,7 +1,7 @@
 /*!
- * jquery.niftymodals v1.1.0 (https://github.com/foxythemes/jquery-niftymodals)
- * Copyright 2015 Foxy Themes 
- * Licensed under MIT license 
+ * jquery.niftymodals v1.1.1 (https://github.com/foxythemes/jquery-niftymodals)
+ * Copyright 2016 Codrops <www.codrops.com> and Foxy Themes 
+ * Licensed under Codrops license http://tympanus.net/codrops/licensing/ 
  */
 
 ;(function($) {
@@ -26,53 +26,6 @@
 
     var config = {};
     var modal = {};
-    var methods = {
-
-      init : function( options ) {
-
-        return this.each(function() {
-          config = $.extend({}, defaults, options);
-
-          modal.modalEl = this;
-
-          if( config.data !== false ){
-            modal.data = options.data;
-          }
-
-          //Show modal
-          helpers.showModal( this );
-        });
-
-      },
-      toggle: function(options) {
-        return this.each(function() {
-          config = $.extend({}, defaults, options);
-          var modal = $(this);
-          if(modal.hasClass(config.classAddAfterOpen)){
-            helpers.removeModal(modal);
-          }else{
-            helpers.showModal(modal);
-          }
-        });
-      },
-      show: function(options) {
-        config = $.extend({}, defaults, options);
-        return this.each(function() {
-
-          var mod = $( this );
-
-          //Show the modal
-          helpers.showModal( mod );
-          
-        });
-      },
-      hide: function(options) {
-        config = $.extend({}, defaults, options);
-        return this.each(function() {
-          helpers.removeModal($(this));  
-        });            
-      }
-    };
 
     var helpers = {
 
@@ -177,6 +130,54 @@
         mod.trigger('show');
       }
 
+    };
+
+    var methods = {
+
+      init : function( options ) {
+
+        return this.each(function() {
+          config = $.extend({}, defaults, options);
+
+          modal.modalEl = this;
+
+          if( config.data !== false ){
+            modal.data = options.data;
+          }
+
+          //Show modal
+          helpers.showModal( this );
+        });
+
+      },
+      toggle: function(options) {
+        return this.each(function() {
+          config = $.extend({}, defaults, options);
+          var modal = $(this);
+          if(modal.hasClass(config.classAddAfterOpen)){
+            helpers.removeModal(modal);
+          }else{
+            helpers.showModal(modal);
+          }
+        });
+      },
+      show: function(options) {
+        config = $.extend({}, defaults, options);
+        return this.each(function() {
+
+          var mod = $( this );
+
+          //Show the modal
+          helpers.showModal( mod );
+          
+        });
+      },
+      hide: function(options) {
+        config = $.extend({}, defaults, options);
+        return this.each(function() {
+          helpers.removeModal($(this));  
+        });            
+      }
     };
 
     if (methods[method]) {

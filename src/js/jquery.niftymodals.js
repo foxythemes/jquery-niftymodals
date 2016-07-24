@@ -20,53 +20,6 @@
 
     var config = {};
     var modal = {};
-    var methods = {
-
-      init : function( options ) {
-
-        return this.each(function() {
-          config = $.extend({}, defaults, options);
-
-          modal.modalEl = this;
-
-          if( config.data !== false ){
-            modal.data = options.data;
-          }
-
-          //Show modal
-          helpers.showModal( this );
-        });
-
-      },
-      toggle: function(options) {
-        return this.each(function() {
-          config = $.extend({}, defaults, options);
-          var modal = $(this);
-          if(modal.hasClass(config.classAddAfterOpen)){
-            helpers.removeModal(modal);
-          }else{
-            helpers.showModal(modal);
-          }
-        });
-      },
-      show: function(options) {
-        config = $.extend({}, defaults, options);
-        return this.each(function() {
-
-          var mod = $( this );
-
-          //Show the modal
-          helpers.showModal( mod );
-          
-        });
-      },
-      hide: function(options) {
-        config = $.extend({}, defaults, options);
-        return this.each(function() {
-          helpers.removeModal($(this));  
-        });            
-      }
-    };
 
     var helpers = {
 
@@ -171,6 +124,54 @@
         mod.trigger('show');
       }
 
+    };
+
+    var methods = {
+
+      init : function( options ) {
+
+        return this.each(function() {
+          config = $.extend({}, defaults, options);
+
+          modal.modalEl = this;
+
+          if( config.data !== false ){
+            modal.data = options.data;
+          }
+
+          //Show modal
+          helpers.showModal( this );
+        });
+
+      },
+      toggle: function(options) {
+        return this.each(function() {
+          config = $.extend({}, defaults, options);
+          var modal = $(this);
+          if(modal.hasClass(config.classAddAfterOpen)){
+            helpers.removeModal(modal);
+          }else{
+            helpers.showModal(modal);
+          }
+        });
+      },
+      show: function(options) {
+        config = $.extend({}, defaults, options);
+        return this.each(function() {
+
+          var mod = $( this );
+
+          //Show the modal
+          helpers.showModal( mod );
+          
+        });
+      },
+      hide: function(options) {
+        config = $.extend({}, defaults, options);
+        return this.each(function() {
+          helpers.removeModal($(this));  
+        });            
+      }
     };
 
     if (methods[method]) {

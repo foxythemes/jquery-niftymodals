@@ -10,8 +10,8 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
         ' * <%= pkg.name %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-        ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> \n' +
-        ' * Licensed under MIT license \n' +
+        ' * Copyright <%= grunt.template.today("yyyy") %> Codrops <www.codrops.com> and <%= pkg.author.name %> \n' +
+        ' * Licensed under Codrops license http://tympanus.net/codrops/licensing/ \n' +
         ' */\n\n',
     // Task configuration.
     concat: {
@@ -44,13 +44,8 @@ module.exports = function(grunt) {
     },
     cssmin:{
       dist: {
-        files: [{
-          expand: true,
-          cwd: 'dist',
-          src: ['**/*.css', '!**/*.min.css'],
-          dest: 'dist',
-          ext: '.min.css'
-        }]
+        src: 'dist/<%= pkg.name %>.css',
+        dest: 'dist/<%= pkg.name %>.min.css'
       }
     },
     jshint: {
