@@ -20,7 +20,7 @@ perspective effects (not including the modals and the overlay).
   -moz-perspective: 600px;
   perspective: 600px;
 }
-.md-dialog {
+.md-container {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -140,7 +140,7 @@ perspective effects (not including the modals and the overlay).
   opacity: 1;
 }
 /* Effect 5: fall */
-.md-effect-5.md-dialog {
+.md-effect-5.md-container {
   -webkit-perspective: 1300px;
   -moz-perspective: 1300px;
   perspective: 1300px;
@@ -166,7 +166,7 @@ perspective effects (not including the modals and the overlay).
   opacity: 1;
 }
 /* Effect 6: side fall */
-.md-effect-6.md-dialog {
+.md-effect-6.md-container {
   -webkit-perspective: 1300px;
   -moz-perspective: 1300px;
   perspective: 1300px;
@@ -218,7 +218,7 @@ perspective effects (not including the modals and the overlay).
   opacity: 1;
 }
 /* Effect 8: 3D flip horizontal */
-.md-effect-8.md-dialog {
+.md-effect-8.md-container {
   -webkit-perspective: 1300px;
   -moz-perspective: 1300px;
   perspective: 1300px;
@@ -244,7 +244,7 @@ perspective effects (not including the modals and the overlay).
   opacity: 1;
 }
 /* Effect 9: 3D flip vertical */
-.md-effect-9.md-dialog {
+.md-effect-9.md-container {
   -webkit-perspective: 1300px;
   -moz-perspective: 1300px;
   perspective: 1300px;
@@ -270,7 +270,7 @@ perspective effects (not including the modals and the overlay).
   opacity: 1;
 }
 /* Effect 10: 3D sign */
-.md-effect-10.md-dialog {
+.md-effect-10.md-container {
   -webkit-perspective: 1300px;
   -moz-perspective: 1300px;
   perspective: 1300px;
@@ -342,7 +342,7 @@ perspective effects (not including the modals and the overlay).
   opacity: 1;
 }
 /* Effect 13: 3D slit */
-.md-effect-13.md-dialog {
+.md-effect-13.md-container {
   -webkit-perspective: 1300px;
   -moz-perspective: 1300px;
   perspective: 1300px;
@@ -396,7 +396,7 @@ perspective effects (not including the modals and the overlay).
   }
 }
 /* Effect 14:  3D Rotate from bottom */
-.md-effect-14.md-dialog {
+.md-effect-14.md-container {
   -webkit-perspective: 1300px;
   -moz-perspective: 1300px;
   perspective: 1300px;
@@ -425,7 +425,7 @@ perspective effects (not including the modals and the overlay).
   opacity: 1;
 }
 /* Effect 15:  3D Rotate in from left */
-.md-effect-15.md-dialog {
+.md-effect-15.md-container {
   -webkit-perspective: 1300px;
   -moz-perspective: 1300px;
   perspective: 1300px;
