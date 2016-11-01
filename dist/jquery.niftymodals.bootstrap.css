@@ -63,6 +63,9 @@ perspective effects (not including the modals and the overlay).
 .md-content {
   position: relative;
   border-radius: 3px;
+  margin: 30px auto;
+  max-width: 630px;
+  min-width: 320px;
 }
 .md-scrollbar-measure {
   position: absolute;
