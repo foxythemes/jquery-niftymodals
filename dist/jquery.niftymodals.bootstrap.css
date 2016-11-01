@@ -1,5 +1,5 @@
 /*!
- * jquery.niftymodals v1.1.1 (https://github.com/foxythemes/jquery-niftymodals)
+ * jquery.niftymodals v1.3.0 (https://github.com/foxythemes/jquery-niftymodals)
  * Copyright 2016 Codrops <www.codrops.com> and Foxy Themes 
  * Licensed under Codrops license http://tympanus.net/codrops/licensing/ 
  */
@@ -194,12 +194,9 @@ perspective effects (not including the modals and the overlay).
 /* Effect 7:  slide and stick to top */
 .md-effect-7 {
   top: 0;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
 }
 .md-effect-7 .md-content {
+  margin-top: 0;
   -webkit-transform: translateY(-200%);
   -moz-transform: translateY(-200%);
   -ms-transform: translateY(-200%);
