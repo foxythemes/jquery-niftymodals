@@ -27,6 +27,7 @@
       removeModal: function( m ) {
         var mod = $( m );
         mod.removeClass( config.classAddAfterOpen );
+        mod.css({'perspective':'1300px'});
         //Remove body open modal class
         body.removeClass(config.classModalOpen);
         //Reset body scrollbar padding
