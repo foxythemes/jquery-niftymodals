@@ -58,8 +58,8 @@
         //Close on click outside the modal
         $( mod ).on('click', function ( e ) {
           
-          var _mContent = $(config.contentSelector, this);
-          var close = $(config.closeSelector, this);
+          var _mContent = $(config.contentSelector, mod);
+          var close = $(config.closeSelector, mod);
 
           if ( !$( e.target ).closest( _mContent ).length && body.hasClass( config.classModalOpen ) ) {
 
@@ -70,7 +70,7 @@
               }
             }
             
-            helpers.removeModal(this);
+            helpers.removeModal(mod);
             close.off('click');
 
             //After close event
